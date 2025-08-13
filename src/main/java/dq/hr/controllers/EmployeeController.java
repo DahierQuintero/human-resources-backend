@@ -4,6 +4,8 @@ import dq.hr.entities.Employee;
 import dq.hr.service.IEmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,31 +33,31 @@ public class EmployeeController {
     }
 
     @GetMapping("/")
-    public List<Employee> getAll() {
+    public ResponseEntity<List<Employee>> getAll() {
         var employees = employeeService.getAll();
         employees.forEach((employee -> LOGGER.info(employee.toString())));
-        return employees;
+        return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
     @PostMapping("/")
-    public Employee create(@RequestBody Employee employee) {
+    public ResponseEntity<Employee> create(@RequestBody Employee employee) {
         LOGGER.info("Employee to be created: " + employee.toString());
-        return employeeService.create(employee);
+        return new ResponseEntity<>(employeeService.create(employee), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public Employee getById(@PathVariable("id") Integer id) {
-        return employeeService.getById(id);
+    public ResponseEntity<Employee> getById(@PathVariable("id") Integer id) {
+        return new ResponseEntity<>(employeeService.getById(id), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public Employee update(@PathVariable("id") Integer id, Employee employee) {
-        return employeeService.update(id, employee);
+    public ResponseEntity<Employee> update(@PathVariable("id") Integer id, @RequestBody Employee employee) {
+        return new ResponseEntity<>(employeeService.update(id, employee), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") Integer id) {
-        return employeeService.delete(id);
+    public ResponseEntity<String> delete(@PathVariable("id") Integer id) {
+        return new ResponseEntity<>(employeeService.delete(id), HttpStatus.OK);
     }
 
 }

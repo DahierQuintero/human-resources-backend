@@ -1,6 +1,7 @@
 package dq.hr.service.serviceImpl;
 
 import dq.hr.entities.Employee;
+import dq.hr.exceptions.ResourceNotFoundException;
 import dq.hr.repositories.IEmployeeRepository;
 import dq.hr.service.IEmployeeService;
 import org.springframework.stereotype.Service;
@@ -25,13 +26,18 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public Employee update(Integer id, Employee employee) {
         Employee employeeExist = iEmployeeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
-        return iEmployeeRepository.save(employee);
+
+        employeeExist.setName(employee.getName());
+        employeeExist.setDepartment(employee.getDepartment());
+        employeeExist.setSalary(employee.getSalary());
+
+        return iEmployeeRepository.save(employeeExist);
     }
 
     @Override
     public Employee getById(Integer id) {
         return iEmployeeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Employee not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Employee with id " + id + " not found"));
     }
 
     @Override
