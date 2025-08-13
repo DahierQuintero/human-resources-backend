@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/hr/employees")
@@ -56,7 +57,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable("id") Integer id) {
+    public ResponseEntity<Map<String, Boolean>> delete(@PathVariable("id") Integer id) {
         return new ResponseEntity<>(employeeService.delete(id), HttpStatus.OK);
     }
 

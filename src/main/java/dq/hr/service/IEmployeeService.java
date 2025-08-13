@@ -3,6 +3,7 @@ package dq.hr.service;
 import dq.hr.entities.Employee;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IEmployeeService {
 
@@ -10,5 +11,5 @@ public interface IEmployeeService {
     Employee update(Integer id, Employee employee);
     Employee getById(Integer id);
     List<Employee> getAll();
-    String delete(Integer id);
+    Map<String, Boolean> delete(Integer id);
 }

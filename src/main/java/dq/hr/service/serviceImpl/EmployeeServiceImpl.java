@@ -6,7 +6,9 @@ import dq.hr.repositories.IEmployeeRepository;
 import dq.hr.service.IEmployeeService;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
@@ -46,8 +48,15 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public String delete(Integer id) {
+    public Map<String, Boolean> delete(Integer id) {
+        iEmployeeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee with id " + id + " not found"));
+
         iEmployeeRepository.deleteById(id);
-        return "Employee with id " + id + " deleted";
+
+        var response = new HashMap<String, Boolean>();
+        response.put("deleted", Boolean.TRUE);
+
+        return response;
     }
 }
