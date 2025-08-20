@@ -42,7 +42,9 @@ ensuring data persistence with MySQL.
 1) Clone the repository ➜ 
 `git clone https://github.com/DahierQuintero/human-resources-backend.git`
 2) Set the environment variables in `application.properties` for connect to database
+
 ![Captura de pantalla](./images/configuration-application.properties.png "Screenshot")
+
 3) Run the `Start butom` application in your IDE (Intellij IDEA is recommended)
 
 ## 🔗Primary endpoints
