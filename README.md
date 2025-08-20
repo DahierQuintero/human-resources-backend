@@ -46,13 +46,13 @@ ensuring data persistence with MySQL.
 3) Run the `Start butom` application in your IDE (Intellij IDEA is recommended)
 
 ## 🔗Primary endpoints
-| Method | Endpoint                  | Description                 |
-|--------|---------------------------|-----------------------------|
-| GET    | /api/v1/hr/employees/     | Return all employees        |
-| GET    | /api/v1/hr/employees/{id} | Return an employee by ID    |
-| POST   | /api/v1/hr/employees/     | Create a new employee       |
-| PUT    | /api/v1/hr/employees/{id} | Update an existing employee |
-| DELETE | /api/v1/hr/employees/{id} | Delete an employee by ID    |
+| __Method__ | __Endpoint__                | __Description__               |
+|------------|-----------------------------|-------------------------------|
+| _GET_      | `/api/v1/hr/employees/`     | *Return all employees*        |
+| _GET_      | `/api/v1/hr/employees/{id}` | *Return an employee by ID*    |
+| _POST_     | `/api/v1/hr/employees/`     | *Create a new employee*       |
+| _PUT_      | `/api/v1/hr/employees/{id}` | *Update an existing employee* |
+| _DELETE_   | `/api/v1/hr/employees/{id}` | *Delete an employee by ID*    |
 
 
 ## 📖Swagger Documentation
